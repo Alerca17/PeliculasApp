@@ -3,14 +3,15 @@ package Servicio;
 import Dominio.Pelicula;
 import java.util.ArrayList;
 
-public class Servicios implements ServicioPeliculas{
+public class Servicios implements ServicioPeliculas {
 
     ArrayList<Pelicula> peliculas = new ArrayList<>();
 
     @Override
     public void mostrarPeliculas() {
 
-        System.out.print("*** Listado de peliculas ***");
+        System.out.println("*** Listado de peliculas ***");
+        System.out.println(" ");
         peliculas.forEach(System.out::println);
     }
 
@@ -25,20 +26,9 @@ public class Servicios implements ServicioPeliculas{
     @Override
     public void buscarPelicula(Pelicula pelicula) {
 
-        boolean encontrado = false;
-        int index = 0;
+        int index = peliculas.indexOf(pelicula);
 
-        for (Pelicula p : peliculas) {
-
-            if (p.getNombre().equals(pelicula.getNombre())) {
-
-                encontrado = true;
-                index = peliculas.indexOf(pelicula);
-                break;
-            }
-        }
-
-        if (encontrado) {
+        if (index != -1) {
 
             System.out.println("Pelicula Encontrada En La Linea " + index);
 
